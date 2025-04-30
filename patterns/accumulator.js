@@ -22,6 +22,20 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
+  if (typeof n !== "number") {
+    return NaN;
+  }
+  if (n < 0) {
+    return undefined;
+  }
+  if (n === 0) {
+    return 1;
+  }
+  let total = 1;
+  for (let i = 1; i <= n; i++) {
+    total = total * i;
+  }
+  return total;
   // TODO
 }
 
@@ -32,6 +46,17 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
+  if (typeof n !== "number") {
+    return null;
+  }
+  if (n === 0 || n < 0) {
+    return [];
+  }
+  let numArr = [];
+  for (let i = 1; i <= n; i++) {
+    numArr.push(i);
+  }
+  return numArr;
   // TODO
 }
 
@@ -40,6 +65,16 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
+  const longStr = strings.reduce(
+    (longestStr, currStr) =>
+      // if (currStr.length > longestStr.length) {
+      //   longestStr = currStr;
+      // }
+      // return longestStr;
+      currStr.length > longestStr.length ? currStr : longestStr,
+    ""
+  );
+  return longStr;
   // TODO
 }
 
@@ -48,6 +83,13 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
+  let count = 0;
+  for (let i = 0; i < attendance.length; i++) {
+    if (attendance[i] === true) {
+      count += 1;
+    }
+  }
+  return count;
   // TODO
 }
 
@@ -62,5 +104,22 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
+  if (typeof dna !== "string") {
+    return null;
+  }
+  const dnaArr = dna.split("");
+  let complementaryStr = "";
+  for (let i = 0; i < dnaArr.length; i++) {
+    if (dnaArr[i] === "A") {
+      complementaryStr += "T";
+    } else if (dnaArr[i] === "T") {
+      complementaryStr += "A";
+    } else if (dnaArr[i] === "C") {
+      complementaryStr += "G";
+    } else if (dnaArr[i] === "G") {
+      complementaryStr += "C";
+    }
+  }
+  return complementaryStr;
   // TODO
 }
